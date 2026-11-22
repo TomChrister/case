@@ -1,37 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tilgjengelig søk
 
-## Getting Started
+Liten nettside der brukeren kan søke etter fiktive aktiviteter, kurs og møteplasser. Bygget med Next.js (App Router) og TypeScript. Frontend og serverdel ligger i samme prosjekt.
 
-First, run the development server:
+## Slik starter du løsningen
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Åpne http://localhost:3000. API-et kan også testes direkte, for eksempel http://localhost:3000/api/search?q=tur
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Oppbygging
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* `data/activities.ts`: fast datasett med fiktive oppføringer og typene.
+* `lib/search.ts`: ren søkefunksjon (trim, små bokstaver, delstrengmatching på tittel). Tomt søk gir alle oppføringer.
+* `app/api/search/route.ts`: GET endepunkt som leser `q` og kaller søkefunksjonen.
+* `components/SearchForm.tsx`: skjema med label, søkefelt og knapp.
+* `components/SearchResults.tsx`: antall treff og liste.
+* `app/page.tsx`: setter sammen skjema, fetch og resultater.
+* `app/globals.css`: enkel grunnstil med synlig fokus.
 
-## Learn More
+## Universell utforming
 
-To learn more about Next.js, take a look at the following resources:
+* Ekte `form`, `input` og `button`, så Tab, Shift+Tab og Enter fungerer uten ekstra kode.
+* Label koblet til søkefeltet. Landemerker: `main`, `search`, `section`. Overskriftsstruktur h1, h2, h3.
+* `lang="nb"` og beskrivende sidetittel.
+* Antall treff annonseres via `role="status"` uten at fokus flyttes.
+* Synlig fokusring med `:focus-visible`. Klikkflater på minst 44px. Støtte for `forced-colors` og `prefers-reduced-motion`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Hva jeg har kontrollert
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Hele søkeflyten kun med tastatur (Tab, Shift+Tab, Enter).
+* Fokusringen er synlig på felt og knapp.
+* Treff, ingen treff og tomt søk, også direkte mot API-et.
+* Skjermleser: antall treff blir lest opp etter søk. (Fyll inn hvilken skjermleser du brukte.)
 
-## Deploy on Vercel
+## Prioritert, gjenstår og tid
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# case
+* Prioritert: søkeflyt, tastaturbruk, skjermleserbeskjed og lesbar kode. Styling er holdt enkel og støtter UU.
+* Gjenstår: feilhåndtering og lastestatus, håndtering av raske søk etter hverandre (AbortController), automatiske tester, søk på sted og type.
