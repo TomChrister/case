@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
-import React from 'react';
 
 export const metadata: Metadata = {
-    title: "Tilgjenelig søk",
+    title: "Tilgjengelig søk",
     description: "Søk etter aktiviteter, kurs og møteplasser",
 };
 
-export default function Rootlayout({
+export default function RootLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
 }) {
     return (
         <html lang="nb">

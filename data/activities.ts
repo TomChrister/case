@@ -1,4 +1,5 @@
-export type ActivityType = 'Aktivitet' | 'Kurs' | 'Møteplass';
+// Union gir feilsjekk og er klar for filter
+export type ActivityType = "Aktivitet" | "Kurs" | "Møteplass";
 
 export type Activity = {
     id: string;

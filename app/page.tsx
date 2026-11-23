@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import SearchForm from '@/components/SearchForm';
+import SearchForm from "@/components/SearchForm";
 import SearchResults from "@/components/SearchResults";
-import type { Activity } from '@/data/activities';
+import type { Activity } from "@/data/activities";
 
 export default function Home() {
     const [results, setResults] = useState<Activity[] | null>(null);
@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <main>
             <h1>Tilgjengelig søk</h1>
-            <SearchForm onSearch={handleSearch} />
+            <SearchForm onSearchAction={handleSearch} />
             <SearchResults results={results} />
         </main>
     )

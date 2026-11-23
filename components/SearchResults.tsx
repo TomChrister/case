@@ -1,4 +1,4 @@
-import type { Activity } from '@/data/activities';
+import type { Activity } from "@/data/activities";
 
 type SearchResultProps = {
     results: Activity[] | null;
@@ -11,10 +11,10 @@ export default function SearchResults({ results }: SearchResultProps) {
     }
 
     return (
-        <section aria-labelledby='results-heading'>
-            <h2 id='results-heading'>Resultater</h2>
+        <section aria-labelledby="results-heading">
+            <h2 id="results-heading">Resultater</h2>
 
-            <p role='status'>{status}</p>
+            <p role="status">{status}</p>
 
             {results !== null && results.length > 0 && (
                 <ul>

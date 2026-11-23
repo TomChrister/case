@@ -29,14 +29,24 @@ npm run dev
 * Antall treff annonseres via `role="status"` uten at fokus flyttes.
 * Synlig fokusring med `:focus-visible`. Klikkflater på minst 44px. Støtte for `forced-colors` og `prefers-reduced-motion`.
 
+## Teknologivalg
+
+Jeg har valgt Next.js, React og TypeScript fordi det er stacken dere bruker, og fordi jeg kjenner den godt. Frontend og serverdel ligger i samme prosjekt. Søket kjører i et eget endepunkt (`/api/search`), slik at grensen mellom frontend og backend er tydelig, og søkefunksjonen kan flyttes til en egen tjeneste senere uten å endre frontend.
+
 ## Hva jeg har kontrollert
 
 * Hele søkeflyten kun med tastatur (Tab, Shift+Tab, Enter).
 * Fokusringen er synlig på felt og knapp.
 * Treff, ingen treff og tomt søk, også direkte mot API-et.
-* Skjermleser: antall treff blir lest opp etter søk. (Fyll inn hvilken skjermleser du brukte.)
+* Skjermleser: Testet med Windows Forteller (Narrator). Antall treff blir lest opp etter søk.
 
 ## Prioritert, gjenstår og tid
 
 * Prioritert: søkeflyt, tastaturbruk, skjermleserbeskjed og lesbar kode. Styling er holdt enkel og støtter UU.
-* Gjenstår: feilhåndtering og lastestatus, håndtering av raske søk etter hverandre (AbortController), automatiske tester, søk på sted og type.
+* Gjenstår:
+  * Feilhåndtering og lastestatus.
+  * Raske søk etter hverandre (AbortController).
+  * Samme søk to ganger gir ingen ny opplesning, fordi statusteksten ikke endres.
+  * Søk på sted og type, ikke bare tittel.
+  * Automatiske tester og testing med flere skjermlesere.
+* Omtrentlig brukt tid: 2 timer.

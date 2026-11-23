@@ -1,27 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type SyntheticEvent } from "react";
 
 type SearchFormProps = {
-    onSearch: (query: string) => void;
+    onSearchAction: (query: string) => void;
 };
 
-export default function SearchForm({ onSearch }: SearchFormProps) {
+export default function SearchForm({ onSearchAction }: SearchFormProps) {
     const [query, setQuery] = useState("");
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
-        onSearch(query);
+        onSearchAction(query);
     }
 
     return (
-        <form role='search' onSubmit={handleSubmit}>
+        <form role="search" onSubmit={handleSubmit}>
             <label htmlFor="search-input">
                 Søk etter aktiviteter, kurs og møteplasser
             </label>
             <input
                 id="search-input"
-                type='search'
+                type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
             />

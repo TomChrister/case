@@ -91,7 +91,7 @@ button:hover {
     border-color: var(--accent-hover);
 }
 
-/* Synlig fokus (WCAG 2.4.7 og 2.4.11): to ringer som fungerer på lys og mørk bunn */
+/* Synlig fokus */
 :focus-visible {
     outline: 3px solid var(--text);
     outline-offset: 2px;
